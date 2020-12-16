@@ -28,7 +28,7 @@ const Text = ({ maxHeight, children }) => {
 
 function App() {
     const [show, setShow] = useState(1)
-    const [data, setData] = useState([
+    const data = [
         {
             title: 'Love of learning, art keys to a great year for Gwen',
             date: '12 Sep, 2018',
@@ -64,15 +64,16 @@ function App() {
             date: '12 Sep, 2018',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
         }]
-    )
-    const [cardChunks, setCardChunks] = useState([])
-    const [showMoreCards, setShowMoreCards] = useState(false)
+
+
     const chunk = (arr, chunkSize = 1, cache = []) => {
         const tmp = [...arr]
         if (chunkSize <= 0) return cache
         while (tmp.length) cache.push(tmp.splice(0, chunkSize))
         return cache
     }
+    const cardChunks = chunk(data, 3)
+    const [showMoreCards, setShowMoreCards] = useState(false)
     const handleShowMoreCards = () => {
         setShow(data.length)
         setShowMoreCards(true)
@@ -81,9 +82,6 @@ function App() {
         setShow(1)
         setShowMoreCards(false)
     }
-    useEffect(() => {
-        setCardChunks(chunk(data, 3))
-    }, [data])
     return (
         <div className="App">
             <div style={{paddingLeft: '1.3%'}}>
