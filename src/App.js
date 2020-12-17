@@ -21,7 +21,7 @@ const Text = ({ maxHeight, children }) => {
                 {children}
             </div>
             <br/>
-            <Button onClick={() => setExpanded(!expanded)} variant="outline-primary">{expanded?'Read Less':'Read More'}</Button>
+            <Button onClick={() => setExpanded(!expanded)} variant="outline-light">{expanded?'Read Less':'Read More'}</Button>
         </Card.Text>
     );
 };
@@ -65,7 +65,7 @@ function App() {
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
         }]
 
-
+    const colors = ['#f59926','#4aadde','#ab75ad']
     const chunk = (arr, chunkSize = 1, cache = []) => {
         const tmp = [...arr]
         if (chunkSize <= 0) return cache
@@ -88,9 +88,7 @@ function App() {
                 <h2 style={{color: 'red'}}>Related Articles</h2>
                 <p style={{width: '70%'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
             </div>
             {
                 cardChunks.map((cardChunk, index) => {
@@ -100,7 +98,7 @@ function App() {
                                 <CardDeck>
                                     {cardChunk.map((card, index) => (
                                         <Col xs="4" key={index}>
-                                            <Card style={{width: '100%'}}>
+                                            <Card style={{width: '100%',backgroundColor:colors[index]}}>
                                                 <Card.Body>
                                                     <Card.Subtitle
                                                         className="mb-2 text-muted">{card.date}</Card.Subtitle>
@@ -121,9 +119,9 @@ function App() {
             }
 
             {!showMoreCards ?
-                <Button style={{float: 'right'}} variant="primary" onClick={handleShowMoreCards}>Read More</Button>
+                <Button style={{float: 'right'}} variant="outline-danger" onClick={handleShowMoreCards}>Read More</Button>
                 :
-                <Button style={{float: 'right'}} variant="primary" onClick={handleShowLessCards}>Read Less</Button>
+                <Button style={{float: 'right'}} variant="outline-danger" onClick={handleShowLessCards}>Read Less</Button>
             }
 
         </div>
