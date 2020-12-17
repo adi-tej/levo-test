@@ -94,14 +94,14 @@ function App() {
                 cardChunks.map((cardChunk, index) => {
                     if (index < show) {
                         return (
-                            <div key={index}>
+                            <div key={index} style={{color:"white"}}>
                                 <CardDeck>
                                     {cardChunk.map((card, index) => (
                                         <Col xs="4" key={index}>
                                             <Card style={{width: '100%',backgroundColor:colors[index]}}>
                                                 <Card.Body>
                                                     <Card.Subtitle
-                                                        className="mb-2 text-muted">{card.date}</Card.Subtitle>
+                                                        className="mb-2">{card.date}</Card.Subtitle>
                                                     <Card.Title style={{height:45}}>{card.title}</Card.Title>
                                                     <Text maxHeight={173}>{card.description}</Text>
                                                 </Card.Body>
